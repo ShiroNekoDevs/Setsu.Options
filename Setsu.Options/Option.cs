@@ -64,5 +64,8 @@ namespace Setsu.Options
         {
             return HasValue ? $"Some: {_value}" : "None";
         }
+
+        public static explicit operator Option<T>(Option<object> opt) =>
+            opt.HasValue ? new((T)opt.Value) : new();
     }
 }
